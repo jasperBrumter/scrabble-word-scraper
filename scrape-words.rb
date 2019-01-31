@@ -1,6 +1,7 @@
 require 'open-uri'
 require 'nokogiri'
 require 'json'
+require 'csv'
 
 
 def scrapeX(length, pagenumber = 0)
@@ -30,11 +31,20 @@ def scrapeX(length, pagenumber = 0)
 	return lengthX
 end
 
-length2 = scrapeX(2)
-length3 = scrapeX(3)
-length4 = scrapeX(4,3)
-length5 = scrapeX(5,10)
-length6 = scrapeX(6,25)
-length7 = scrapeX(7,51)
-length8 = scrapeX(8,85)
-length9 = scrapeX(9,117)
+
+CSV.open("french_scrabble_words.csv", "w") do |csv|
+	csv << scrapeX(2)
+	csv << scrapeX(3)
+	csv << scrapeX(4,3)
+	csv << scrapeX(5,10)
+	csv << scrapeX(6,25)
+	csv << scrapeX(7,51)
+	csv << scrapeX(8,85)
+	csv << scrapeX(9,117)
+	csv << scrapeX(10,136)
+	csv << scrapeX(11,136)
+	csv << scrapeX(12,118)
+	csv << scrapeX(13,90)
+	csv << scrapeX(14,61)
+	csv << scrapeX(15,38)
+end
